@@ -39,6 +39,7 @@ Users who want to keep all their health and medical information all together in 
   * Medications: Users put in/delete medications they're taking.  
   * Doctors: Users can  put in/delete their doctors information, how to contact, summaries and other notes.  
   * Personal and Health Information: Users can put it/delete Personal information if they have health problems and allergies.
+  * Messages: users can use this as electronic conversations asynchronously.
 - Identify three goals of the application  
   1. User experience. Should be easy to use and understand.  
   2. Offer value. Should solve a problem and meet a need that users have.  
