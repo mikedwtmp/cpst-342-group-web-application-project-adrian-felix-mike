@@ -24,7 +24,7 @@ After this course, your application will consist of the following components lis
 For this deliverable, you will need to modify the readme file and add responses to the questions below. that you are currently reading and address the following items below using a variety of permissible markdown syntax.
 
 - Provide your name or the team's name  
-Michael Dries, Felix Oke, Adrian Loredo.
+Michael Dreis, Felix Oke, Adrian Loredo.
 - Name of the application  
 Either ListaMedica or Medcord
 - Description of application *Describe how someone will use your application  
@@ -45,7 +45,9 @@ Users who want to keep all their health and medical information all together in 
   2. Offer value. Should solve a problem and meet a need that users have.  
   3. Be tested. Should be tested to ensure that it works as intended and is free of bugs.
 - Identify tools/software you will use to complete the project.
-- [GitHub Codespaces](https://github.com/features/codespaces)
+  1. [GitHub Codespaces](https://github.com/features/codespaces)
+  2. express module
+  3. SQL database
 * I suggest using an online coding environment that will allow your team to work collaboratively and practice git commands.  A few are listed below.
    - [CodeSandbox.io](https://codesandbox.io/)
    - [Replit.com](https://replit.com/)
