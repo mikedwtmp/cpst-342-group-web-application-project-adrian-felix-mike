@@ -24,7 +24,7 @@ After this course, your application will consist of the following components lis
 For this deliverable, you will need to modify the readme file and add responses to the questions below. that you are currently reading and address the following items below using a variety of permissible markdown syntax.
 
 - Provide your name or the team's name  
-Michael Dries, Felix Oke, Adrian Loredo.
+Michael Dreis, Felix Oke, Adrian Loredo.
 - Name of the application  
 Either ListaMedica or Medcord
 - Description of application *Describe how someone will use your application  
