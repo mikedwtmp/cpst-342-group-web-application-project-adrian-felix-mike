@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard for {{userName}}</title>
+         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <form action="/addNewMed" method="POST">
+            <button name="userID" type= "submit" class="btn btn-primary" value="{{userID}}">Add New Medicaiton</button>
+        </form>
+        
+        <table style="margin: 20\px;">
+            <tr> 
+                <th> Medication</th>
+                <th> Dose</th>
+                <th> Comment</th>
+                <th> Modify</th>
+            </tr>
+            {{#each rows}}
+                <tr>
+                    <td> {{this.medName}}</td>
+                    <td> {{this.medDose}} {{this.doseUnit}} {{this.frequency}}</td>
+                    <td> {{this.comment}}</td>
+                    <td> 
+                        <form action="/deleteMed" method="POST">
+                            <input type="number" name="userID" hidden='true' value={{this.userID}}>
+                            <button name="medID" type= "submit" class="btn btn-primary" value={{this.medID}}>Delete</button>
+                        </form>
+                        <form action="/updateMed" method="POST">
+                            <input type="number" name="userID" hidden='true' value={{this.userID}}>
+                            <button name="medID" type= "submit" class="btn btn-primary" value={{this.medID}}>Update</button>
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+            
+        </table>
+        <form action="/covidAlert" method="POST">
+            <button type="submit" name = "userID" class = "btn btn-primary" value="{{userID}}"">Covid Alert</button>
+        </form>
+
+    </body>
+</html>

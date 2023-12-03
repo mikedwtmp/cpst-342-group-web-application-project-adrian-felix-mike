@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard for {{userName}}</title>
+         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h2>Update info for {{medName}}</h2>
+            <form action="/updateMedEntry" method="POST">
+                <input type="number" name="userID" size="40" hidden="true" value="{{userID}}"><br>
+                <input type="number" name="medID" size="40" hidden="true" value="{{medID}}"><br>
+                <input type="text" name="medName" size="40" value='{{medName}}'><br>
+                <input type="number" name="medDose" size="40" value={{medDose}}><br>
+                <input type="text" name="doseUnit" size="40" value={{doseUnit}} ><br>
+                <input type="text" name="frequency" size="40" value={{frequency}}><br>
+                <input type="text" name="comment" size="40" value="{{comment}}"><br>
+                <button type="submit" class = "btn btn-primary">Submit</button>
+            </form>
+
+    </body>
+</html>
