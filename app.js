@@ -54,4 +54,8 @@ app.post('/covidAlert', (req, res) => {
     dbOperations.getCovidData(req.body.userID, res)
 })
 
+app.post('/usernotfound', (req, res) => {
+    res.render('usernotfound.hbs');
+})
+
 app.listen(port)

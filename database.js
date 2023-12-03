@@ -12,13 +12,13 @@ let db = new sqlite3.Database('./med_record_db.db', sqlite3.OPEN_READWRITE, (err
 
 let lookUpUser = (userName, res) => {
     var lookUpUser = "SELECT * from userInfo WHERE userName = ?";
-    db.each(lookUpUser, [userName], (err, row) => {
+    db.get(lookUpUser, [userName], (err, row) => {
         if (err) {
             console.error(err.message)
             throw err
         }
         if(!row) {
-            res.render('/usernotfound');
+            res.render('usernotfound');
         }else{
             console.log(row)
             res.render('loginSuccess.hbs', row);
@@ -38,7 +38,6 @@ let getAllAndRender = (userID, res) => {
         }
         
         var params = {userID: userID, rows: rows};
-        console.log(params)
         res.render('dashboard.hbs', params);
     
     })
@@ -61,13 +60,11 @@ let addNewMedication = (medInfoObject, res) => {
     //var userID = number(medInfoObject.userID)
     var addMedQuery = "INSERT INTO medTableID" + medInfoObject.userID + " (medName, medDose, doseUnit, frequency, comment, userID) VALUES (?, ?, ?, ?, ?, ?)";
     var params = [medInfoObject.medName, medInfoObject.medDose, medInfoObject.doseUnit, medInfoObject.frequency, medInfoObject.comment, medInfoObject.userID];
-    console.log(params);
     db.run(addMedQuery, params, (err) => {
         if (err) {
             console.error(err.message)
             throw err
         }
-        console.log(res)
         getAllAndRender(medInfoObject.userID, res);
         
         
@@ -84,7 +81,6 @@ let lookUpMedToUpdate = (medID, userID, res) => {
             console.error(err.message)
             throw err
         }
-        console.log(row);
         res.render('updateForm.hbs', row);
 
     })
