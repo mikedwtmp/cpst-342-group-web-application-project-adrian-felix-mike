@@ -28,7 +28,7 @@
                             <button name="medID" type= "submit" class="btn btn-primary" value={{this.medID}}>Delete</button>
                         </form>
                         <form action="/updateMed" method="POST">
-                            <input type="number" name="userID" hidden='true' value={{userID}}>
+                            <input type="number" name="userID" hidden='true' value={{this.userID}}>
                             <button name="medID" type= "submit" class="btn btn-primary" value={{this.medID}}>Update</button>
                         </form>
                     </td>
@@ -36,6 +36,9 @@
             {{/each}}
             
         </table>
+        <form action="/covidAlert" method="POST">
+            <button type="submit" name = "userID" class = "btn btn-primary" value="{{userID}}"">Covid Alert</button>
+        </form>
 
     </body>
 </html>

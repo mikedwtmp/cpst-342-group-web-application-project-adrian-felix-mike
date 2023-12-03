@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Medication App</title>
+         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Covid Alert</h1>
+        <h2>There were {{data.cases_weekly}} cases of COVID last week in your zip code! </h2>
+        <form action="/dashboard" method="POST">
+            
+            <button type="submit" name = "userID" class="btn btn-primary" value={{userID}}>Home</button>
+        </form>
+    </body>
+</html>

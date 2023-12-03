@@ -1,5 +1,6 @@
 const express = require('express');
 const dbOperations = require('./database.js');
+const getLastWeekEndDate = require('./getLastWeekEndDate.js');
 const app = express();
 const port = 3000;
 
@@ -44,8 +45,13 @@ app.post('/updateMed', (req, res) => {
 })
 
 app.post('/updateMedEntry', (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     dbOperations.updateAndRender(req.body, res);
+})
+
+app.post('/covidAlert', (req, res) => {
+    console.log("covid app" + req.body.userID);
+    dbOperations.getCovidData(req.body.userID, res)
 })
 
 app.listen(port)
