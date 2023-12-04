@@ -9,7 +9,7 @@ app.set("view engine", "hbs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/', function (req, res) {
     res.render('home.hbs');
 })
 
@@ -58,4 +58,4 @@ app.post('/usernotfound', (req, res) => {
     res.render('usernotfound.hbs');
 })
 
-app.listen(port)
+app.listen(port, () => console.log(`Example app listening port ${port}!`))
