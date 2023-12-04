@@ -10,6 +10,7 @@ let db = new sqlite3.Database('./med_record_db.db', sqlite3.OPEN_READWRITE, (err
 	}
 });
 
+// Check user account  
 let lookUpUser = (userName, res) => {
     var lookUpUser = "SELECT * from userInfo WHERE userName = ?";
     db.get(lookUpUser, [userName], (err, row) => {
@@ -28,6 +29,7 @@ let lookUpUser = (userName, res) => {
 
 }
 
+// Display Medication Details
 let getAllAndRender = (userID, res) => {
     var medTableName = "medTableID" + userID;
     var query = "SELECT * from " + medTableName;
@@ -43,7 +45,7 @@ let getAllAndRender = (userID, res) => {
     })
 
 }
-
+// Delete Medication Details
 let deleteMed = (medID, userID, res) => {
     var deleteQuery = "DELETE from medTableID" + userID + " WHERE medID = ?";
     db.run(deleteQuery, [medID], (err) => {
@@ -55,6 +57,8 @@ let deleteMed = (medID, userID, res) => {
     })
 }
 
+
+// Create Medication Details
 let addNewMedication = (medInfoObject, res) => {
     console.log(medInfoObject);
     //var userID = number(medInfoObject.userID)
@@ -73,6 +77,7 @@ let addNewMedication = (medInfoObject, res) => {
 
 }
 
+//Update Medication Details
 let lookUpMedToUpdate = (medID, userID, res) => {
     
     queryForUpdate = "SELECT * from medTableID" + userID + " WHERE medID = ?";
@@ -98,6 +103,7 @@ let updateAndRender = (updateParams, res) => {
     })
 }
 
+// Get COVID data through API
 let getCovidData = (userID, res) => {
     today = getLastWeekEndDate.getLastWeekEndDate();
     
