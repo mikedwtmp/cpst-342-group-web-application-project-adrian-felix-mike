@@ -4,15 +4,65 @@
         <title>Medication App</title>
          <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .showcase {
+                background: url(https://freedomfromharm.com/wp-content/uploads/2016/02/medicine-1325116-1279x959-1279x640.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: calc(100vh - 0.1px);
+            }
+
+            .showcase .overlay {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 0.1px);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding: 0 1.5rem;
+            }
+
+            .showcase .overlay h1 {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+                color: #fff;
+                max-width: 1000px;
+            }
+
+            .showcase .overlay h1 span {
+                color: #309DCD;
+            }
+
+            .showcase .overlay h2 {
+                color: #fff;
+                margin-bottom: 2rem;
+            }
+
+            .btn:hover {
+                opacity: 0.75;
+            }
+
+            @media (min-width: 1024px) {
+                .showcase .overlay h1 {
+                  font-size: 6rem;  
+                }
+            }
+
+        </style>
     </head>
     <body>
-        <h1>Welcome to your medical record!</h1>
-        <h2>Please log in (username = lWolf, password does not matter)<h2>
-        <form action="/authenticate" method="POST">
-            <input type="text" name="userName" class="form-control" placeholder="User Name" size="40"><br>
-            <input type='text' name='password' class="form-control" placeholder="Password" size="40"><br>
-            <input type="submit" class="btn btn-primary" value="submit">
-        </form>
-        <img src="medicine-1325116.jpg" alt="picture of pills">
+        <section class="showcase">
+            <div class="overlay">
+                <h1>Welcome to your <span>medical</span> record!</h1>
+                <h2>Please log in (username = lWolf, password does not matter)<h2>
+                <form action="/authenticate" method="POST">
+                    <input type="text" name="userName" class="form-control" placeholder="User Name" size="40"><br>
+                    <input type='text' name='password' class="form-control" placeholder="Password" size="40"><br>
+                    <input type="submit" class="btn btn-primary" value="submit">
+                </form>
+            </div>
+        </section>
     </body>
 </html>
