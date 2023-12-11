@@ -4,13 +4,42 @@
         <title>Medication App</title>
          <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .showcase {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 0.1px);
+                padding: 0 1.5rem;
+            }
+
+            .showcase h1 {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+                max-width: 1000px;
+            }
+
+            .showcase h2 {
+                margin-bottom: 2rem;
+            }
+
+            @media (min-width: 1024px) {
+                .showcase .overlay h1 {
+                  font-size: 6rem;  
+                }
+            }
+        </style>
     </head>
     <body>
-        <h1>Covid Alert</h1>
-        <h2>There were {{data.cases_weekly}} cases of COVID last week in your zip code! </h2>
-        <form action="/dashboard" method="POST">
-            
-            <button type="submit" name = "userID" class="btn btn-primary" value={{userID}}>Home</button>
-        </form>
+        <section class="showcase">
+            <h1>Covid Alert</h1>
+            <h2>There were {{data.cases_weekly}} cases of COVID last week in your zip code! </h2>
+            <form action="/dashboard" method="POST">
+                
+                <button type="submit" name = "userID" class="btn btn-primary" value={{userID}}>Home</button>
+            </form>
+        </section>
     </body>
 </html>

@@ -5,14 +5,39 @@
          <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+    <style>
+        .showcase {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 0.1px);
+                padding: 0 1.5rem;
+            }
+
+            .showcase p {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                max-width: 1000px;
+            }
+
+            @media (min-width: 1024px) {
+                .showcase p {
+                  font-size: 3rem;  
+                }
+            }
+    </style>
     <body>
-        <p>
-            Login successful. Click to continue.
-        </p>
-        <form action="/dashboard", method="POST">
-            
-            <button name = "userID" type="submit" class="btn btn-primary" value={{userID}}>"Continue"</button>
-        </form> 
+        <section class="showcase">
+            <p>
+                Login successful. Click to continue.
+            </p>
+            <form action="/dashboard", method="POST">
+                
+                <button name = "userID" type="submit" class="btn btn-primary" value={{userID}}>"Continue"</button>
+            </form>
+        </section> 
     </body>
 
 </html>

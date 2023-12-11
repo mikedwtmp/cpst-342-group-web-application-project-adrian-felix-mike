@@ -4,13 +4,39 @@
         <title>Medication App</title>
          <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .showcase {
+               text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 0.1px);
+                padding: 0 1.5rem;
+            }
+
+            .showcase h1 {
+                font-size: 4rem;
+                max-width: 1000px;
+                margin-bottom: 1rem;
+            }
+
+            @media (min-width: 1024px) {
+                .showcase h1 {
+                  font-size: 6rem;  
+                }
+            }
+
+        </style>
     </head>
     <body>
-        <h1>Sorry, account not found.</h1>
-        
-        <form action="/" method="GET">
+        <section class="showcase">
+            <h1>Sorry, account not found.</h1>
             
-            <button type="submit"  class="btn btn-primary">Home</button>
-        </form>
+            <form action="/" method="GET">
+                
+                <button type="submit"  class="btn btn-primary">Home</button>
+            </form>
+        </section>
     </body>
 </html>
