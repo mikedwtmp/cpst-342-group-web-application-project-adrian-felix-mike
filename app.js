@@ -66,4 +66,12 @@ app.post('/usernotfound', (req, res) => {
     res.render('usernotfound.hbs');
 })
 
+app.get('/createAccount', (req, res) => {
+    res.render('createNewAccount.hbs');
+})
+
+app.post('/createNewAccountFromInput', (req, res) => {
+    dbOperations.createNewAccount(req.body, res);
+})
+
 app.listen(port, () => console.log(`Example app listening port ${port}!`))

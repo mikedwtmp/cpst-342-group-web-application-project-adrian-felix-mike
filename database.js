@@ -129,12 +129,46 @@ let getCovidData = (userID, res) => {
         .then(data => {res.render('covidAlert.hbs', {userID:userID, data:data[0]})})
 
     })
-
-
-    
+   
 }
 
-module.exports = {lookUpUser, getAllAndRender, deleteMed, addNewMedication, lookUpMedToUpdate, updateAndRender, getCovidData};
+
+
+let createNewAccount = (info, res) => {
+    console.log(info)
+    var addUser = "INSERT INTO userInfo (userName, fName, lName, Age, streetAddress, ZIP) values (?, ?, ?, ?, ?, ?)";
+    var params = [info.userName, info.fName, info.lName, info.Age, info.streetAddress, info.ZIP];
+    db.run(addUser, params, (err) => {
+        if (err) {
+            console.error(err.message)
+            throw err
+        }
+        var getNewUser = "SELECT userID from userInfo WHERE userName = ?"
+        db.get(getNewUser, info.userName, (err, ID) => {
+            if (err) {
+                console.error(err.message)
+                throw err
+            }
+            console.log(ID);
+            createNewUserTableAndGetDashboard(ID.userID, res);
+        })
+
+    })
+}
+
+let createNewUserTableAndGetDashboard = (userID, res) => {
+    var createNewMedTable = "CREATE TABLE medTableID" + userID + " (medID INTEGER, medName TEXT, medDose INTEGER, doseUnit TEXT, frequency TEXT, comment TEXT, userID INTEGER, PRIMARY KEY('medID'))";
+    db.run(createNewMedTable, (err) => {
+        if (err) {
+            console.error(err.message)
+            throw err
+        }
+        getAllAndRender(userID, res);
+
+    })
+}
+
+module.exports = {lookUpUser, getAllAndRender, deleteMed, addNewMedication, lookUpMedToUpdate, updateAndRender, getCovidData, createNewAccount};
 
 // var addUser = "INSERT INTO userInfo (userName, fName, lName, age, streetAddress, ZIP) VALUES (?, ?, ?, ?, ?, ?)";
 // var params = ['lWolf', 'Lu', 'Wolf', 21, '1032 W Sheridan Rd', 60660];

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New User</title>
+         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <style>
+        .showcase {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 0.1px);
+                padding: 0 1.5rem;
+            }
+
+        .showcase h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                max-width: 1000px;
+            }
+
+        @media (min-width: 1024px) {
+                .showcase h2 {
+                  font-size: 4rem;  
+                }
+            }
+
+    </style>
+    <body>
+        <section class="showcase">
+            <h2>Enter New User Information</h2>
+                <form action="/createNewAccountFromInput" method="POST">
+                    <label for="userName">Enter User Name: </label> 
+                    <input type="text" id = "userName" name="userName" size="40"><br>
+                    <label for="fName">Enter first name: </label>
+                    <input type="text" id="fName" name="fName" size="40"><br>
+                    <label for="lName">Enter last name: </label>
+                    <input type="text" id="lName" name="lName" size="40"><br>
+                    <label for="Age">Enter Age: </label>
+                    <input type="number" id="Age" name="Age" size="40"><br>
+                    <label for="streetAddress">Enter street address: </label>
+                    <input type="text" id="streetAddress" name="streetAddress" size="40"><br>
+                    <label for="ZIP">Enter zip code: </label>
+                    <input type="number" id="ZIP" name="ZIP" size="40"><br>
+                    <label for="password">Enter password: </label>
+                    <input type="text" id="password" name="password" size="40"><br>
+                    <button type="submit" class = "btn btn-primary">Submit</button>
+                </form>
+        </section>
+    </body>
+</html>
