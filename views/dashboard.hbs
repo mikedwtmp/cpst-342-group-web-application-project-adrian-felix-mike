@@ -36,10 +36,10 @@
                         {{#each rows}}
                             <tr>
                                 <td> {{this.medName}}</td>
-                                <td> {{this.medDose}} {{this.doseUnit}} {{this.frequency}}</td>
-                                <td> {{this.comment}}</td>
+                                <td width="20%"> {{this.medDose}} {{this.doseUnit}} {{this.frequency}}</td>
+                                <td width="35%"> {{this.comment}}</td>
                                 <td>    
-                                    <div class="row justify-content-start">
+                                    <div class="row justify-content-start" >
                                             <form action="/deleteMed" method="POST">
                                                 <input type="number" name="userID" hidden='true' value={{this.userID}}>
                                                 <button name="medID" type= "submit" class="btn btn-danger" value={{this.medID}}>Delete</button>

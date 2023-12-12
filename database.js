@@ -124,17 +124,54 @@ let getCovidData = (userID, res) => {
         var url = "https://data.cityofchicago.org/resource/yhhz-zm2v.json?week_end=" + today.toISOString()
         url = url.substring(0, url.length - 1);
         url = url + "&zip_code=" + row.ZIP;
-        fetch('https://data.cityofchicago.org/resource/yhhz-zm2v.json?week_end=2023-11-25T00:00:00.000&zip_code=60601')
+        console.log(url)
+        fetch(url)
         .then(data => data.json())
-        .then(data => {res.render('covidAlert.hbs', {userID:userID, data:data[0]})})
+        .then(data => {
+            console.log(data);
+            res.render('covidAlert.hbs', {userID:userID, data:data[0]})})
 
     })
-
-
-    
+   
 }
 
-module.exports = {lookUpUser, getAllAndRender, deleteMed, addNewMedication, lookUpMedToUpdate, updateAndRender, getCovidData};
+
+
+let createNewAccount = (info, res) => {
+    console.log(info)
+    var addUser = "INSERT INTO userInfo (userName, fName, lName, Age, streetAddress, ZIP) values (?, ?, ?, ?, ?, ?)";
+    var params = [info.userName, info.fName, info.lName, info.Age, info.streetAddress, info.ZIP];
+    db.run(addUser, params, (err) => {
+        if (err) {
+            console.error(err.message)
+            throw err
+        }
+        var getNewUser = "SELECT userID from userInfo WHERE userName = ?"
+        db.get(getNewUser, info.userName, (err, ID) => {
+            if (err) {
+                console.error(err.message)
+                throw err
+            }
+            console.log(ID);
+            createNewUserTableAndGetDashboard(ID.userID, res);
+        })
+
+    })
+}
+
+let createNewUserTableAndGetDashboard = (userID, res) => {
+    var createNewMedTable = "CREATE TABLE medTableID" + userID + " (medID INTEGER, medName TEXT, medDose INTEGER, doseUnit TEXT, frequency TEXT, comment TEXT, userID INTEGER, PRIMARY KEY('medID'))";
+    db.run(createNewMedTable, (err) => {
+        if (err) {
+            console.error(err.message)
+            throw err
+        }
+        getAllAndRender(userID, res);
+
+    })
+}
+
+module.exports = {lookUpUser, getAllAndRender, deleteMed, addNewMedication, lookUpMedToUpdate, updateAndRender, getCovidData, createNewAccount};
 
 // var addUser = "INSERT INTO userInfo (userName, fName, lName, age, streetAddress, ZIP) VALUES (?, ?, ?, ?, ?, ?)";
 // var params = ['lWolf', 'Lu', 'Wolf', 21, '1032 W Sheridan Rd', 60660];
