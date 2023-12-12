@@ -124,9 +124,12 @@ let getCovidData = (userID, res) => {
         var url = "https://data.cityofchicago.org/resource/yhhz-zm2v.json?week_end=" + today.toISOString()
         url = url.substring(0, url.length - 1);
         url = url + "&zip_code=" + row.ZIP;
-        fetch('https://data.cityofchicago.org/resource/yhhz-zm2v.json?week_end=2023-11-25T00:00:00.000&zip_code=60601')
+        console.log(url)
+        fetch(url)
         .then(data => data.json())
-        .then(data => {res.render('covidAlert.hbs', {userID:userID, data:data[0]})})
+        .then(data => {
+            console.log(data);
+            res.render('covidAlert.hbs', {userID:userID, data:data[0]})})
 
     })
    
