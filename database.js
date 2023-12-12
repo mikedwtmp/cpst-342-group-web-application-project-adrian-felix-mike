@@ -2,12 +2,12 @@ var sqlite3 = require('sqlite3').verbose();
 const getLastWeekEndDate = require('./getLastWeekEndDate.js');
 
 let db = new sqlite3.Database('./med_record_db.db', sqlite3.OPEN_READWRITE, (err) => {
-	if (err) {
-	  console.error(err.message)
-	  throw err
-	}else{
-		console.log('Connected to the SQLite database.') 
-	}
+    if (err) {
+      console.error(err.message)
+      throw err
+    }else{
+        console.log('Connected to the SQLite database.') 
+    }
 });
 
 // Check user account  
@@ -29,18 +29,26 @@ let lookUpUser = (userName, res) => {
 
 }
 
+
+
 // Display Medication Details
 let getAllAndRender = (userID, res) => {
     var medTableName = "medTableID" + userID;
     var query = "SELECT * from " + medTableName;
-    db.all(query, (err, rows) => {
+    db.all(query, (err, rows_1) => {
         if (err) {
             console.error(err.message)
             throw err
         }
         
-        var params = {userID: userID, rows: rows};
-        res.render('dashboard.hbs', params);
+        var params = {userID: userID, rows: rows_1};
+        var getUserInfo = "SELECT * from userInfo WHERE userID = ?";
+        db.get(getUserInfo, userID, (err, row) => {
+            console.log(row);
+            res.render('dashboard.hbs', Object.assign(params, row))
+
+        })
+        
     
     })
 
@@ -136,3 +144,4 @@ module.exports = {lookUpUser, getAllAndRender, deleteMed, addNewMedication, look
 //     }
 //     console.log(`entry added`);
 // })
+
