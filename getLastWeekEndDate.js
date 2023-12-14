@@ -4,7 +4,7 @@ let getLastWeekEndDate = () => {
     today.setHours(-(today.getTimezoneOffset() / 60),0,0,0)
     //this takes the current date and moves back to saturday, which is the final day of the week for the API
     today.setDate(today.getDate() - today.getDay() - 9);
-    console.log(today.getDate() + today.getDay());
+    console.log(today.getDay());
     return today;
 }
 
